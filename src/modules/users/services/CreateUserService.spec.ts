@@ -1,11 +1,16 @@
 import AppError from '@shared/error/AppError';
 import FakeUserRepository from '../repositories/fakes/fakeUserRepository';
 import CreateUserService from './CreateUserService';
+import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider';
 
 describe('Create User', () => {
   it('should be able to create a new user', async () => {
     const fakeUserRepository = new FakeUserRepository();
-    const createUser = new CreateUserService(fakeUserRepository);
+    const fakeHashProvider = new FakeHashProvider();
+    const createUser = new CreateUserService(
+      fakeUserRepository,
+      fakeHashProvider,
+    );
 
     const user = await createUser.execute({
       name: 'John Doe',
@@ -18,7 +23,11 @@ describe('Create User', () => {
 
   it('should be able to create a new user with same email from another', async () => {
     const fakeUserRepository = new FakeUserRepository();
-    const createUser = new CreateUserService(fakeUserRepository);
+    const fakeHashProvider = new FakeHashProvider();
+    const createUser = new CreateUserService(
+      fakeUserRepository,
+      fakeHashProvider,
+    );
 
     await createUser.execute({
       name: 'John Doe',
