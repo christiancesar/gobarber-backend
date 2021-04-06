@@ -1,17 +1,22 @@
-import { getRepository } from 'typeorm';
-import path from 'path';
-import fs from 'fs';
-import User from '@modules/users/infra/typeorm/entities/User';
 import uploadConfig from '@config/upload';
+import { inject, injectable } from 'tsyringe';
+import User from '@modules/users/infra/typeorm/entities/User';
 import AppError from '@shared/error/AppError';
+import fs from 'fs';
+import path from 'path';
 import IUsersRepository from '../repositories/IUsersRepository';
 
 interface IResquest {
   user_id: string;
   avatarFileName: string;
 }
+
+@injectable()
 class UpdateUserAvatarService {
-  constructor(private usersRepository: IUsersRepository) {}
+  constructor(
+    @inject('UsersRepository')
+    private usersRepository: IUsersRepository,
+  ) {}
 
   public async execute({ user_id, avatarFileName }: IResquest): Promise<User> {
     const user = await this.usersRepository.findById(user_id);
