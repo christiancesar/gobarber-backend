@@ -23,14 +23,14 @@ describe('CreateAppointment', () => {
       fakeAppointmentRepository,
     );
 
-    const appointmentDate = new Date(2021, 3, 10, 11);
+    const appointmentDate = new Date(2021, 3, 10, 11, 0, 0, 0);
 
     await createAppointment.execute({
       date: appointmentDate,
       provider_id: '123123',
     });
 
-    expect(
+    await expect(
       createAppointment.execute({
         date: appointmentDate,
         provider_id: '123123',

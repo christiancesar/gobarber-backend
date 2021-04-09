@@ -1,10 +1,7 @@
-import uploadConfig from '@config/upload';
-import { inject, injectable } from 'tsyringe';
 import User from '@modules/users/infra/typeorm/entities/User';
-import AppError from '@shared/error/AppError';
-import fs from 'fs';
-import path from 'path';
 import IStorageProvider from '@shared/container/providers/StorageProvider/models/IStorageProvider';
+import AppError from '@shared/error/AppError';
+import { inject, injectable } from 'tsyringe';
 import IUsersRepository from '../repositories/IUsersRepository';
 
 interface IResquest {
