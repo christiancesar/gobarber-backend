@@ -1,4 +1,4 @@
-import AppError from '@shared/error/AppError';
+import AppError from '@shared/errors/AppError';
 import { startOfHour } from 'date-fns';
 import { inject, injectable } from 'tsyringe';
 import Appointment from '../infra/typeorm/entities/Appointment';

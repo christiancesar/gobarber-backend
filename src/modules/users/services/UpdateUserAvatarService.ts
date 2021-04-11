@@ -1,6 +1,6 @@
 import User from '@modules/users/infra/typeorm/entities/User';
 import IStorageProvider from '@shared/container/providers/StorageProvider/models/IStorageProvider';
-import AppError from '@shared/error/AppError';
+import AppError from '@shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 import IUsersRepository from '../repositories/IUsersRepository';
 

@@ -1,5 +1,5 @@
 import User from '@modules/users/infra/typeorm/entities/User';
-import AppError from '@shared/error/AppError';
+import AppError from '@shared/errors/AppError';
 import { injectable, inject } from 'tsyringe';
 import IUsersRepository from '../repositories/IUsersRepository';
 import IHashProvider from '../providers/HashProvider/models/IHashProvider';
@@ -13,7 +13,7 @@ interface IRequest {
 @injectable()
 class CreateUserService {
   constructor(
-    @inject('UserRepository')
+    @inject('UsersRepository')
     private usersRepository: IUsersRepository,
     @inject('HashProvider')
     private hashedProvider: IHashProvider,
@@ -28,7 +28,7 @@ class CreateUserService {
 
     const hasPassword = await this.hashedProvider.generateHash(password);
 
-    const user = this.usersRepository.create({
+    const user = await this.usersRepository.create({
       name,
       email,
       password: hasPassword,

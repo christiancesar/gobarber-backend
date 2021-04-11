@@ -1,7 +1,7 @@
-import AppError from '@shared/error/AppError';
-import FakeUserRepository from '../repositories/fakes/fakeUserRepository';
+import AppError from '@shared/errors/AppError';
+import FakeUserRepository from '../repositories/fakes/FakeUsersRepository';
 import ResetPasswordService from './ResetPasswordService';
-import FakeUserTokensRepository from '../repositories/fakes/fakeUserTokensRepository';
+import FakeUserTokensRepository from '../repositories/fakes/FakeUserTokensRepository';
 import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider';
 
 let fakeUserRepository: FakeUserRepository;
