@@ -15,7 +15,7 @@ class ListProvidersService {
   ) {}
 
   public async execute({ user_id }: IResquest): Promise<User[]> {
-    const user = await this.usersRepository.findAllProvides({
+    const user = await this.usersRepository.findAllProviders({
       except_user_id: user_id,
     });
 

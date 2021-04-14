@@ -26,7 +26,7 @@ describe('UpdateAvatar', () => {
 
     await updateUserAvatar.execute({
       user_id: user.id,
-      avatarFileName: 'avatar.jpg',
+      avatarFilename: 'avatar.jpg',
     });
 
     expect(user.avatar).toBe('avatar.jpg');
@@ -36,7 +36,7 @@ describe('UpdateAvatar', () => {
     await expect(
       updateUserAvatar.execute({
         user_id: 'non-exist-user',
-        avatarFileName: 'avatar.jpg',
+        avatarFilename: 'avatar.jpg',
       }),
     ).rejects.toBeInstanceOf(AppError);
   });
@@ -52,12 +52,12 @@ describe('UpdateAvatar', () => {
 
     await updateUserAvatar.execute({
       user_id: user.id,
-      avatarFileName: 'avatar.jpg',
+      avatarFilename: 'avatar.jpg',
     });
 
     await updateUserAvatar.execute({
       user_id: user.id,
-      avatarFileName: 'avatar2.jpg',
+      avatarFilename: 'avatar2.jpg',
     });
 
     expect(deleteFile).toHaveBeenCalledWith('avatar.jpg');
