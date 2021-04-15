@@ -1,4 +1,4 @@
-import FakeAppointmentsRepository from '../repositories/fakes/FakeAppointmentRepository';
+import FakeAppointmentsRepository from '../repositories/fakes/FakeAppointmentsRepository';
 import ListProviderDayAvailabilityService from './ListProviderDayAvailabilityService';
 import ListProviderMonthAvailabilityService from './ListProviderMonthAvailabilityService';
 
