@@ -35,7 +35,7 @@ class SendForgotEmailService {
       throw new AppError('User does not exists');
     }
 
-    const tokenCreateAt = userToken.create_at;
+    const tokenCreateAt = userToken.created_at;
     const compareDate = addHours(tokenCreateAt, 2);
 
     if (isAfter(Date.now(), compareDate)) {
