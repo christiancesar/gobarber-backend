@@ -1,6 +1,13 @@
 # GoBarber
 Aplicação desenvolvida no GoStack 11
 
+- [GoBarber](#gobarber)
+  - [Run](#run)
+  - [Commands building](#commands-building)
+    - [Arquivo de configuração](#arquivo-de-configuração)
+  - [Ferramentas](#ferramentas)
+
+
 ## Run
 
 Para iniciar o projeto rode os seguintes comandos
