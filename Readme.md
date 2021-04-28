@@ -14,6 +14,7 @@ Para iniciar o projeto rode os seguintes comandos
 - `yarn` (Ira instalar todas as dependências)
 
   **Bancos de dados**
+
   Obs: No linux talvez seja necessario incluir `sudo`.
 
 - `sudo docker run --name gobarber-pgsql -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres`
