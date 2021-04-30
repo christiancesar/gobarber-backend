@@ -2,14 +2,27 @@
 Aplicação desenvolvida no GoStack 11
 
 - [GoBarber](#gobarber)
-  - [Run](#run)
-  - [Commands building](#commands-building)
-    - [Arquivo de configuração](#arquivo-de-configuração)
+  - [Produção](#produção)
+    - [Links](#links)
+    - [Rotas](#rotas)
+  - [Inicio](#inicio)
   - [Ferramentas](#ferramentas)
   - [Servidor de produção](#servidor-de-produção)
 
 
-## Run
+## Produção
+
+### Links
+- [GoBarber Web](https://gobarber.copyrights.tech/)
+
+-  [GoBarber API](https://api.gobarber.copyrights.tech/)
+
+### Rotas
+
+  [GoBarberApi - Docs](docs/APIDocumentation.md)
+
+
+## Inicio
 
 Para iniciar o projeto rode os seguintes comandos
 - `yarn` (Ira instalar todas as dependências)
@@ -25,33 +38,6 @@ Para iniciar o projeto rode os seguintes comandos
 
 - `yarn typeorm migration:run`
 
-
-## Commands building
-
-`yarn add -D @babel/cli @babel/core @babel/node @babel/preset-env @babel/preset-typescript babel-plugin-module-resolver babel-plugin-transform-typescript-metadata @babel/plugin-proposal-decorators @babel/plugin-proposal-class-properties`
-
-### Arquivo de configuração
-- babel.config.js
-```javascript
-module.exports = {
-  presets: [
-    ['@babel/preset-env', { targets: { node: 'current' } }],
-    '@babel/preset-typescript'
-  ],
-  plugins: [
-    ['module-resolver', {
-      alias: {
-        '@modules': './src/modules',
-        '@config': './src/config',
-        '@shared': './src/shared'
-      }
-    }],
-    'babel-plugin-transform-typescript-metadata',
-    ['@babel/plugin-proposal-decorators', { 'legacy': true }],
-    ['@babel/plugin-proposal-class-properties', { 'loose': true }]
-  ],
-}
-```
 ## Ferramentas
 - VSCode
 - Insomnia
@@ -70,7 +56,7 @@ module.exports = {
 
 ## Servidor de produção
 
-No Nível 06 do bootcamp foi usada a DigitalOceam para subir o servidor e inclur toda a configuração do Integração e Entrega continua. Como meu foco era compreender mais sobre o ambiente da AWS(Amanzon Web Service), criei um passo a passo que tive que fazer para enviar a aplicação, a diferença é pouca da Digital para AWS.
+No Nível 06 do bootcamp foi usada a Digital Ocean para subir o servidor e inclur toda a configuração do Integração e Entrega continua. Como meu foco era compreender mais sobre o ambiente da AWS(Amanzon Web Service), criei um passo a passo que tive que fazer para enviar a aplicação, a diferença é pouca da Digital para AWS.
 
 [AWS ServerUp](docs/AwsServerUp.md)
 
