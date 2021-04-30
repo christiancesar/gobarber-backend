@@ -93,8 +93,7 @@ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.ht
   ```
 
 # Configure Ngix
-
-Probably need to run the command as `sudo su`
+Probably need to run the command as `sudo su` to do etiting files `nginx`
 - Run:
 
   ```bash
@@ -107,6 +106,7 @@ Probably need to run the command as `sudo su`
   ```bash
   $ cd /etc/nginx/sites-available
   ```
+
 - Copy file `default`
 
   ```bash
@@ -152,3 +152,13 @@ Probably need to run the command as `sudo su`
   $ service nginx reload
   $ service nginx restart
 ```
+
+## Application live
+
+- Using PM2
+
+```sudo yarn install -g p```
+
+## Docker live
+
+```docker update --restart=unless-stopped```
