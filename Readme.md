@@ -6,6 +6,7 @@ Aplicação desenvolvida no GoStack 11
   - [Commands building](#commands-building)
     - [Arquivo de configuração](#arquivo-de-configuração)
   - [Ferramentas](#ferramentas)
+  - [Servidor de produção](#servidor-de-produção)
 
 
 ## Run
@@ -66,4 +67,10 @@ module.exports = {
   **Ubuntu**
   Arquivo tera uma extensão `.AppImage` para executar execute os passos seguintes:
   ![sparkless](docs/2021-04-28%2013-45-26.gif)
+
+## Servidor de produção
+
+No Nível 06 do bootcamp foi usada a DigitalOceam para subir o servidor e inclur toda a configuração do Integração e Entrega continua. Como meu foco era compreender mais sobre o ambiente da AWS(Amanzon Web Service), criei um passo a passo que tive que fazer para enviar a aplicação, a diferença é pouca da Digital para AWS.
+
+[AWS ServerUp](docs/AwsServerUp.md)
 

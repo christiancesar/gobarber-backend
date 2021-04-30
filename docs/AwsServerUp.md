@@ -157,8 +157,90 @@ Probably need to run the command as `sudo su` to do etiting files `nginx`
 
 - Using PM2
 
-```sudo yarn install -g p```
+  ```bash
+  $ sudo yarn global add install pm2
+  ```
+
+- Adicionar serviço no pm2
+
+  ```bash
+  $ pm2 start dist/shared/infra/http/server.js --name gobarber-api
+  ```
+
+- List process with pm2
+
+  ```bash
+  $ pm2 list
+  ```
+
+- Run command `$ pm2 startup systemd` para que o pm2 mantenha a aplicação sempre em execução, expected response:
+
+  ```bash
+  [PM2] Init System found: systemd[PM2] To setup the Startup Script, copy/paste the following command:
+  sudo env PATH=$PATH:/usr/bin /usr/local/share/.config/yarn/global/node_modules/pm2/bin/pm2 startup systemd -u ubuntu --hp /home/ubuntu
+  ```
+
+- Execute o comando que o **pm2** retornou:
+
+  ```bash
+  $ sudo env PATH=$PATH:/usr/bin /usr/local/share/.config/yarn/global/node_modules/pm2/bin/pm2 startup systemd -u ubuntu --hp /home/ubuntu
+  ```
+
+- Retorno esperado
+
+  ```bash
+  [PM2] Init System found: systemd
+  Platform systemd
+  Template
+  [Unit]
+  Description=PM2 process manager
+  Documentation=https://pm2.keymetrics.io/
+  After=network.target
+
+  [Service]
+  Type=forking
+  User=ubuntu
+  LimitNOFILE=infinity
+  LimitNPROC=infinity
+  LimitCORE=infinity
+  Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/bin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+  Environment=PM2_HOME=/home/ubuntu/.pm2
+  PIDFile=/home/ubuntu/.pm2/pm2.pid
+  Restart=on-failure
+
+  ExecStart=/usr/local/share/.config/yarn/global/node_modules/pm2/bin/pm2 resurrect
+  ExecReload=/usr/local/share/.config/yarn/global/node_modules/pm2/bin/pm2 reload all
+  ExecStop=/usr/local/share/.config/yarn/global/node_modules/pm2/bin/pm2 kill
+
+  [Install]
+  WantedBy=multi-user.target
+
+  Target path
+  /etc/systemd/system/pm2-ubuntu.service
+  Command list
+  [ 'systemctl enable pm2-ubuntu' ]
+  [PM2] Writing init configuration in /etc/systemd/system/pm2-ubuntu.service
+  [PM2] Making script booting at startup...
+  [PM2] [-] Executing: systemctl enable pm2-ubuntu...
+  Created symlink /etc/systemd/system/multi-user.target.wants/pm2-ubuntu.service → /etc/systemd/system/pm2-ubuntu.service.
+  [PM2] [v] Command successfully executed.
+  +---------------------------------------+
+  [PM2] Freeze a process list on reboot via:
+  $ pm2 save
+
+  [PM2] Remove init script via:
+  $ pm2 unstartup systemd
+  ```
+
+- Para obter log da aplicação, run ```$ pm2 log```
 
 ## Docker live
+Para manter os container sempre online, mesmo após alguma reinicialização:
 
-```docker update --restart=unless-stopped```
+- Run:
+
+  ```bash
+  $ docker update --restart=unless-stopped
+  ```
+
+## Config Domain and SSL
