@@ -18,13 +18,12 @@
     }
   },
   {
-    "name": "mongo",
+    "name": "gobarber-mongo",
     "type": "mongodb",
     "host": "localhost",
     "port": 27017,
-    "username": "",
-    "password": "",
-    "database": "gobarber",
+    "username": "gobarber",
+    "password": "f7a4082e95968685c49539ae7ecbb27d",
     "useUnifiedTopology": true,
     "entities": [
       "./dist/modules/**/infra/typeorm/schemas/*.js"
