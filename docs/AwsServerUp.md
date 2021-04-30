@@ -1,12 +1,17 @@
-# Linux
+# Server
 
-# AWS
+ ## AWS
+
+- SO : Ubuntu 20.4 LTS
+- AWS EC2 : Free Tier
 
 **Step 1: Create a Security group**
+
 https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.html
 
 
 ## Install dependencies
+
 
 ### Docker
 - https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository#Installation-methods
@@ -92,7 +97,8 @@ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.ht
   -d bitnami/redis:latest
   ```
 
-# Configure Ngix
+## Configure Ngix
+
 Probably need to run the command as `sudo su` to do etiting files `nginx`
 - Run:
 
@@ -146,12 +152,12 @@ Probably need to run the command as `sudo su` to do etiting files `nginx`
 
   nginx: configuration file /etc/nginx/nginx.conf test is successful
   ```
-## Start Server
+- Start Server
 
-```bash
+  ```bash
   $ service nginx reload
   $ service nginx restart
-```
+  ```
 
 ## Application live
 
@@ -232,10 +238,10 @@ Probably need to run the command as `sudo su` to do etiting files `nginx`
   $ pm2 unstartup systemd
   ```
 
-- Para obter log da aplicação, run ```$ pm2 log```
+- To obtain application log, run ```$ pm2 log```
 
 ## Docker live
-Para manter os container sempre online, mesmo após alguma reinicialização:
+To keep containers always online, even after some restart:
 
 - Run:
 
@@ -244,3 +250,169 @@ Para manter os container sempre online, mesmo após alguma reinicialização:
   ```
 
 ## Config Domain and SSL
+
+### Domain
+- Browse and edit the `gobarber` file:
+  ```bash
+  $ sudo su
+  $ cd /etc/nginx/sites-available/
+  $ nano gobarber
+  ```
+
+- Include your server's url, as in the example below:
+
+  ```bash
+  server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    #Example
+    #server_name api.gobarber.copyrights.tech;
+
+    server_name <link-aplication>;
+
+    location / {
+      proxy_pass http://localhost:3333;
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection 'upgrade';
+      proxy_set_header Host $host;
+      proxy_cache_bypass $http_upgrade;
+    }
+  }
+  ```
+- Run: `service nginx restart`
+
+### SSL
+
+[Certbot](https://certbot.eff.org/) is a system that makes certificates available free of charge, selecting the operating system, a sequence of commands is available to be performed. Below codes that I executed and their answers:
+
+- Terminal:
+
+  ```bash
+  $ snap --version
+
+  snap    2.49.2
+  snapd   2.49.2
+  series  16
+  ubuntu  20.04
+  kernel  5.4.0-1045-aws
+
+  $ sudo snap install core
+
+  core 16-2.49.2 from Canonical✓ installed
+
+  $ sudo snap refresh core
+
+  snap "core" has no updates available
+
+  $ sudo apt-get remove certbot
+
+  Reading package lists... Done
+  Building dependency tree
+  Reading state information... Done
+  Package 'certbot' is not installed, so not removed
+  0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+  ubuntu@ip-172-31-38-166:~$ sudo snap install --classic certbot
+  certbot 1.14.0 from Certbot Project (certbot-eff✓) installed
+  ubuntu@ip-172-31-38-166:~$ sudo ln -s /snap/bin/certbot /usr/bin/certbot
+  ubuntu@ip-172-31-38-166:~$ sudo certbot --nginx
+  Saving debug log to /var/log/letsencrypt/letsencrypt.log
+  Plugins selected: Authenticator nginx, Installer nginx
+  Enter email address (used for urgent renewal and security notices)
+  (Enter 'c' to cancel): christiancnp@gmail.com
+
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Please read the Terms of Service at
+  https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf. You must
+  agree in order to register with the ACME server. Do you agree?
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  (Y)es/(N)o: Y
+
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Would you be willing, once your first certificate is successfully issued, to
+  share your email address with the Electronic Frontier Foundation, a founding
+  partner of the Let's Encrypt project and the non-profit organization that
+  develops Certbot? We'd like to send you email about our work encrypting the web,
+  EFF news, campaigns, and ways to support digital freedom.
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  (Y)es/(N)o: N
+  Account registered.
+
+  Which names would you like to activate HTTPS for?
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  1: api.gobarber.copyrights.tech
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Select the appropriate numbers separated by commas and/or spaces, or leave input
+  blank to select all options shown (Enter 'c' to cancel): 1
+  Requesting a certificate for api.gobarber.copyrights.tech
+  Performing the following challenges:
+  http-01 challenge for api.gobarber.copyrights.tech
+  Waiting for verification...
+  Cleaning up challenges
+  Deploying Certificate to VirtualHost /etc/nginx/sites-enabled/gobarber
+  Redirecting all traffic on port 80 to ssl in /etc/nginx/sites-enabled/gobarber
+
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Congratulations! You have successfully enabled
+  https://api.gobarber.copyrights.tech
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  IMPORTANT NOTES:
+  - Congratulations! Your certificate and chain have been saved at:
+    /etc/letsencrypt/live/api.gobarber.copyrights.tech/fullchain.pem
+    Your key file has been saved at:
+    /etc/letsencrypt/live/api.gobarber.copyrights.tech/privkey.pem
+    Your certificate will expire on 2021-07-29. To obtain a new or
+    tweaked version of this certificate in the future, simply run
+    certbot again with the "certonly" option. To non-interactively
+    renew *all* of your certificates, run "certbot renew"
+  - If you like Certbot, please consider supporting our work by:
+
+    Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+    Donating to EFF:                    https://eff.org/donate-le
+
+  ```
+
+- Expected final result in `/etc/nginx/sites-available/gobarber`, all settings are made automatically:
+
+  ```bash
+  server {
+
+    server_name api.gobarber.copyrights.tech;
+
+    location / {
+      proxy_pass http://localhost:3333;
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection 'upgrade';
+      proxy_set_header Host $host;
+      proxy_cache_bypass $http_upgrade;
+    }
+
+    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/api.gobarber.copyrights.tech/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/api.gobarber.copyrights.tech/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+  }
+
+  server {
+    if ($host = api.gobarber.copyrights.tech) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        server_name api.gobarber.copyrights.tech;
+    return 404; # managed by Certbot
+  }
+
+  ```
+
+## Workflow CI
+
