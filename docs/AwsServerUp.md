@@ -74,7 +74,7 @@ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.ht
 
   docker run --name mongo \
   -e MONGO_INITDB_ROOT_USERNAME=gobarber \
-  -e MONGO_INITDB_ROOT_PASSWORD=f7a4082e95968685c49539ae7ecbb27d \
+  -e MONGO_INITDB_ROOT_PASSWORD=<password> \
   -p 27017:27017 \
   -d mongo
   ```
@@ -416,3 +416,4 @@ To keep containers always online, even after some restart:
 
 ## Workflow CI
 
+Consultar arquivo [main.yml](../main.yml)

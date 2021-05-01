@@ -6,7 +6,7 @@ Aplicação desenvolvida no GoStack 11
   - [Produção](#produção)
     - [Links](#links)
     - [Rotas](#rotas)
-  - [Inicio](#inicio)
+  - [Begin](#begin)
     - [Bancos de dados](#bancos-de-dados)
   - [Ferramentas](#ferramentas)
   - [Servidor de produção](#servidor-de-produção)
@@ -16,18 +16,30 @@ Aplicação desenvolvida no GoStack 11
 
 ### Links
 - [GoBarber Web](https://gobarber.copyrights.tech/)
+  - Repositorio:
+  [gobarber-frontend](https://github.com/christiancesar/gobarber-frontend)
 
--  [GoBarber API](https://api.gobarber.copyrights.tech/)
+- [GoBarber API](https://api.gobarber.copyrights.tech/)
+  - Repositorio:
+  [gobarber-backend](https://github.com/christiancesar/gobarber-backend)
 
 ### Rotas
 
   [GoBarberApi - Docs](docs/APIDocumentation.md)
 
 
-## Inicio
+## Begin
 
-Para iniciar o projeto rode os seguintes comandos
-- `yarn` (Ira instalar todas as dependências)
+- Clonar repositorio:
+
+  ```bash
+  $ git clone https://github.com/christiancesar/gobarber-backend.git
+  ```
+- Instalar todas as dependências
+
+  ```bash
+  $ yarn
+  ```
 
 ### Bancos de dados
 
@@ -57,10 +69,12 @@ $ yarn typeorm migration:run
 
 - Redis: Armazena cache dos dados consultados no banco dedos, para visualizar as informações usei [Redis UI](https://www.electronjs.org/apps/redis-gui-unofficial)
 
-  **Windows**
+  **Windows:**
+
   Baixa o `.exe` e instale.
 
-  **Ubuntu**
+  **Ubuntu:**
+
   Arquivo tera uma extensão `.AppImage` para executar execute os passos seguintes:
   ![sparkless](docs/2021-04-28%2013-45-26.gif)
 
