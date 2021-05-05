@@ -1,8 +1,8 @@
 # GoBarber
-Aplicação desenvolvida no GoStack 11
 
 **Sumario**
 - [GoBarber](#gobarber)
+  - [Objetivo](#objetivo)
   - [Produção](#produção)
     - [Links](#links)
     - [Rotas](#rotas)
@@ -11,11 +11,33 @@ Aplicação desenvolvida no GoStack 11
   - [Ferramentas](#ferramentas)
   - [Servidor de produção](#servidor-de-produção)
 
+## Objetivo
+Gobarber é uma aplicação proposta no GoStack 11, para ser um agendador de serviço para cabeleireiros, podendo ser agendada pelo cliente através do app mobile(Não desenvolvido, pois meu foco foi no backend e front) e gerenciado pelos cabeleireiros através do navegador.
+
+Pretendo incorporar a parte de agendamento do cliente que foi desenvolvimento no app mobile no app web.
+
+Pontos interessantes abordados nesta aplicação:
+
+- Typescript para o desenvolvimento, traz melhor compreensão do projeto, o que facilita o desenvolvimento e futuras alterações/manutenções no código;
+
+- DDD(Domain driven design), Foi interessante ver a aplicabilidade dos mesmo, no começo me pareceu mais como complicação para desenvolver do que solução, porém, com a medida que aplicação vai crescendo é perceptível a facilidade de encontrar ou criar um novo arquivo, por conta do domínio.
+
+- SOLID, claro que nenhum principio é uma bala de prata, e que cada projeto pode ser necessário incluir 1 ou mais destes princípios. Saber quando aplicar ainda é um tanto complicado, porém, creio que com desenvolvimento de outras aplicações vai se tornando mais nítido de quando aplicar algum destes princípios.
+
+- Uso do Pattern Service e Repository que visam separar resposabilidades e abstrair regras de negocio
+
+- Amazon SES - resposável pelo envio de email, por enquanto aplicado apenas na recuperação da senha
+
+- Amazon EC2 - Servidor que escolhi para upar a aplicação, o projeto original Diego Fernandez faz uso da Digital Ocean, optei pela Amazon por querer aprender mais sobre seus serviços. Deixei ate um mini tutorial do projeto nom eu github, disponível no link abaixo
+
+- Aquisição e configuração de um domínio
+
+- Uso do Netlify para hospedar o frontend
 
 ## Produção
 
 ### Links
-- [GoBarber Web](https://gobarber.copyrights.tech/)
+- [GoBarber Web](https://www.gobarber.copyrights.tech/)
   - Repositorio:
   [gobarber-frontend](https://github.com/christiancesar/gobarber-frontend)
 
