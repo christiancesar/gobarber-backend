@@ -28,7 +28,9 @@ Pontos interessantes abordados nesta aplicação:
 
 - Amazon SES - resposável pelo envio de email, por enquanto aplicado apenas na recuperação da senha
 
-- Amazon EC2 - Servidor que escolhi para upar a aplicação, o projeto original Diego Fernandez faz uso da Digital Ocean, optei pela Amazon por querer aprender mais sobre seus serviços. Deixei ate um mini tutorial do projeto nom eu github, disponível no link abaixo
+- Amazon EC2 - Servidor que escolhi para upar a aplicação, o projeto original Diego Fernandez faz uso da Digital Ocean, optei pela Amazon por querer aprender mais sobre seus serviços. Deixei ate um mini tutorial do projeto nom eu github, disponível no link abaixo.
+
+- GitActions
 
 - Aquisição e configuração de um domínio
 
@@ -46,8 +48,6 @@ Pontos interessantes abordados nesta aplicação:
   [gobarber-backend](https://github.com/christiancesar/gobarber-backend)
 
 ### Rotas
-
-  [GoBarberApi - Docs](docs/APIDocumentation.md)
 
   [Insomnia Routes](docs/Insomnia_routes_gobarber)
 
