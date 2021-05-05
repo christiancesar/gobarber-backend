@@ -27,6 +27,8 @@ Aplicação desenvolvida no GoStack 11
 
   [GoBarberApi - Docs](docs/APIDocumentation.md)
 
+  [Insomnia Routes](docs/Insomnia_routes_gobarber)
+
 
 ## Begin
 
