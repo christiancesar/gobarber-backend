@@ -48,8 +48,8 @@ jobs:
           source: ".,!node_modules"
           target: "~/app/gobarber-backend/"
           script: |
-            cd ~/app/gobarber-backend/
-            yarn
-            ./node_modules/.bin/typeorm migration:run
-            pm2 restart gobarber-api
+            cd ~/app/gobarber-backend/,
+            yarn,
+            ./node_modules/.bin/typeorm migration:run,
+            pm2 restart gobarber-api.
             
