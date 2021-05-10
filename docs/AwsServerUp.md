@@ -69,14 +69,6 @@ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.ht
   -e POSTGRESQL_DATABASE=gobarber \
   -p 35432:5432 \
   -d bitnami/postgresql:latest
-
-  or
-
-  docker run --name mongo \
-  -e MONGO_INITDB_ROOT_USERNAME=gobarber \
-  -e MONGO_INITDB_ROOT_PASSWORD=<password> \
-  -p 27017:27017 \
-  -d mongo
   ```
 - MongoDB
 
@@ -86,6 +78,14 @@ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.ht
   -e MONGODB_USERNAME=<passoword> \
   -p 47017:27017 \
   -d bitnami/mongodb:latest
+  
+  or
+
+  docker run --name mongo \
+  -e MONGO_INITDB_ROOT_USERNAME=gobarber \
+  -e MONGO_INITDB_ROOT_PASSWORD=<password> \
+  -p 27017:27017 \
+  -d mongo
 
   ```
 - Redis
